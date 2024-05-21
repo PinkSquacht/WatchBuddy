@@ -17,7 +17,7 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
-    cors.init_app(app)
+    cors.init_app(app, resources={r"/*": {"origins": "*"}})
     moment.init_app(app)
 
     with app.app_context():
