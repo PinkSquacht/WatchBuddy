@@ -1,13 +1,31 @@
 // pages/index.js
-import Link from "next/link";
+// import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import SearchBar from "@/componets/SearchBar";
 import { useState } from "react";
+import { useRouter } from "next/router";
+
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const handleSearch = (searchTerm) => {
-    console.log(`Searching for ${searchTerm}`);
+  const router = useRouter();
+
+  const handleSearch = (term) => {
+    console.log('Search term set to:', term);
+    setSearchTerm(term);
+  };
+
+  const handleGetRecommendations = () => {
+    if (searchTerm.trim()) {
+      console.log('Navigating to recommendations with mood:', searchTerm);
+      router.push({
+        pathname: '/recommendations',
+        query: { mood: searchTerm }
+      });
+    } else {
+      console.log('Please enter a mood');
+    }
   };
 
   const toggleOverlay = () => {
@@ -41,9 +59,7 @@ const Home = () => {
                 <p>Genre/Mood options...</p>
               </div>
             )}
-            <Link href="/movie">
-              <button className={styles.button}> Get recommendations</button>
-            </Link>
+            <button className={styles.button} onClick={handleGetRecommendations}>Get recommendations</button>
           </div>
         </section>
       </main>
