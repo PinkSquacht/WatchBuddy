@@ -1,42 +1,24 @@
-// components/SearchBar.jsx
+// components/SearchBar.js
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 
 const SearchBar = ({ onSearch }) => {
-  const [term, setTerm] = useState('');
-  const router = useRouter();
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const handleInputChange = (e) => {
-    setTerm(e.target.value);
-  };
-
-  const handleSearch = () => {
-    onSearch(term);
-    if (term.trim()) {
-      router.push({
-        pathname: '/recommendations',
-        query: { mood: term }
-      });
-    } else {
-      console.log('Please enter a mood');
-    }
+  const handleSearch = (event) => {
+    event.preventDefault();
+    onSearch(searchTerm);
   };
 
   return (
-    <div>
+    <form onSubmit={handleSearch}>
       <input
         type="text"
-        value={term}
-        onChange={handleInputChange}
-        placeholder="Enter a mood"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search for a movie..."
       />
-      <button onClick={handleSearch}>Search</button>
-    </div>
+    </form>
   );
 };
 
 export default SearchBar;
-
-
-
-
