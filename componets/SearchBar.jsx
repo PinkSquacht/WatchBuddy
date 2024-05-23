@@ -1,10 +1,10 @@
-// components/SearchBar.jsx
+
 import { useState } from 'react';
-// import { useRouter } from 'next/router';
+
 
 const SearchBar = ({ onSearch }) => {
   const [term, setTerm] = useState('');
-  // const router = useRouter();
+
 
   const handleInputChange = (e) => {
     const newTerm = e.target.value;
@@ -12,17 +12,6 @@ const SearchBar = ({ onSearch }) => {
     onSearch(newTerm); //Call onSearch when the input value changes
   };
 
-  // const handleSearch = () => {
-  //   onSearch(term);
-  //   if (term.trim()) {
-  //     router.push({
-  //       pathname: '/recommendations',
-  //       query: { mood: term }
-  //     });
-  //   } else {
-  //     console.log('Please enter a mood');
-  //   }
-  // };
 
   return (
     <div>
