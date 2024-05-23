@@ -24,7 +24,7 @@ const Home = () => {
         query: { mood: searchTerm }
       });
     } else {
-      console.log('Please enter a mood');
+      console.log('Please enter a movie or tv show');
     }
   };
 
@@ -47,7 +47,7 @@ const Home = () => {
             <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add genre/mood +</p>
             {isOverlayOpen && (
               <div className={styles.overlay}>
-                {/* Add your genre/mood options here */}
+                {/* Add your genre/mood here */}
                 <p>Genre/Mood options...</p>
               </div>
             )}
@@ -55,7 +55,7 @@ const Home = () => {
             <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add your streaming services (optional) +</p>
             {isOverlayOpen && (
               <div className={styles.overlay}>
-                {/* Add your genre/mood options here */}
+                {/* Add your streaming servie(s) here */}
                 <p>Genre/Mood options...</p>
               </div>
             )}
