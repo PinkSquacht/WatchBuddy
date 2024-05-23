@@ -1,10 +1,8 @@
-
+// components/SearchBar.jsx
 import { useState } from 'react';
-
 
 const SearchBar = ({ onSearch }) => {
   const [term, setTerm] = useState('');
-
 
   const handleInputChange = (e) => {
     const newTerm = e.target.value;
@@ -21,7 +19,6 @@ const SearchBar = ({ onSearch }) => {
         onChange={handleInputChange}
         placeholder="Enter a movie or tv show"
       />
-      {/* <button onClick={handleSearch}>Search</button> */}
     </div>
   );
 };
