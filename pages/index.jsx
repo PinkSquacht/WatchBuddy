@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import SearchBar from "@/componets/SearchBar";
 import { useState } from "react";
+import { ChakraProvider } from '@chakra-ui/react'
 
 const Home = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
@@ -15,6 +16,7 @@ const Home = () => {
   };
 
   return (
+  <ChakraProvider>  
     <div className={styles.container}>
       <header className={styles.header}>
         <h1 className={styles.title}>Deciding what to watch shouldn’t take forever.</h1>
@@ -51,6 +53,7 @@ const Home = () => {
         <p>&copy; 2024 Watch Buddy. All rights reserved.</p>
       </footer>
     </div>
+    </ChakraProvider>
   );
 };
 
