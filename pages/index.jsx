@@ -77,7 +77,7 @@ const Home = () => {
             )}
             {isOverlayOpen && (
               <div className={styles.overlay}>
-                <h2>Select Your Steaming Services</h2>
+                <h2>Select Your Streaming Services</h2>
                 <div className={styles.services}>
                   {["Netflix", "Hulu", "Amazon Prime", "HBO Max"].map((service) => (
                     <div
@@ -85,7 +85,7 @@ const Home = () => {
                       className={ `${styles.service} ${selectedServices.includes(service) ? styles.selected : ''}` }
                       onClick={() => handleServiceClick(service)}
                     >
-                      <img src={`/${service.toLowerCase().replace(" ", "_")}.png`} alt={service} />
+                      <img src={`/${service.toLowerCase().replace(/ /g, "_")}.png`} alt={service} />
                       <p>{service}</p>
                     </div>
                   ))}

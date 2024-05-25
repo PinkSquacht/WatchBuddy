@@ -63,6 +63,16 @@
   padding: 10px;
   border: 2px solid transparent;
   border-radius: 5px;
+  text-align: center; /* Center the text and image */
+}
+
+.service img {
+  max-width: 100px; /* Set a maximum width for the images */
+  max-height: 100px; /* Set a maximum height for the images */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image */
 }
 
 .service.selected {
