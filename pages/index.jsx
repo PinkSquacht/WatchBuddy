@@ -1,18 +1,45 @@
 // pages/index.js
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import SearchBar from "@/componets/SearchBar";
 import { useState } from "react";
-import { ChakraProvider } from '@chakra-ui/react'
 
 const Home = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const handleSearch = (searchTerm) => {
-    console.log(`Searching for ${searchTerm}`);
+  const [selectedServices, setSelectedServices] = useState([]); // [Netflix, Hulu, Amazon Prime, HBO Max]
+  const router = useRouter();
+
+  const handleSearch = (term) => {
+    console.log('Search term set to:', term);
+    setSearchTerm(term);
   };
+
+  const handleGetRecommendations = () => {
+    if (searchTerm.trim()) {
+      console.log('Navigating to recommendations with term:', searchTerm);
+      router.push({
+        pathname: '/recommendations',
+        query: { mood: searchTerm, services: selectedServices.join(',') },
+      });
+    } else {
+      console.log('Please enter a mood');
+    }
+    };
 
   const toggleOverlay = () => {
     setIsOverlayOpen(!isOverlayOpen);
+  };
+
+  const handleServiceClick = (service) => {
+    setSelectedServices((prevSelected) => 
+      prevSelected.includes(service)
+        ? prevSelected.filter((s) => s !== service)
+        : [...prevSelected, service]
+    );
+  };
+
+  const handleDoneClick = () => {
+    setIsOverlayOpen(false);
   };
 
   return (
@@ -31,21 +58,41 @@ const Home = () => {
             <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add genre/mood +</p>
             {isOverlayOpen && (
               <div className={styles.overlay}>
-                {/* Add your genre/mood options here */}
+                {/* Add your genre/mood here */}
                 <p>Genre/Mood options...</p>
               </div>
             )}
             <hr />
             <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add your streaming services (optional) +</p>
-            {isOverlayOpen && (
-              <div className={styles.overlay}>
-                {/* Add your genre/mood options here */}
-                <p>Genre/Mood options...</p>
+            {selectedServices.length > 0 && (
+              <div className={styles.selectedServices}>
+                <p>Selected Services:</p>
+                <ul>
+                  {selectedServices.map((service) => (
+                    <li key={service}>{service}</li>
+                  ))}
+                </ul>
               </div>
             )}
-            <Link href="/movie">
-              <button className={styles.button}> Get recommendations</button>
-            </Link>
+            {isOverlayOpen && (
+              <div className={styles.overlay}>
+                <h2>Select Your Streaming Services</h2>
+                <div className={styles.services}>
+                  {["Netflix", "Hulu", "Amazon Prime", "HBO Max"].map((service) => (
+                    <div
+                      key={service}
+                      className={ `${styles.service} ${selectedServices.includes(service) ? styles.selected : ''}` }
+                      onClick={() => handleServiceClick(service)}
+                    >
+                      <img src={`/${service.toLowerCase().replace(/ /g, "_")}.png`} alt={service} />
+                      <p>{service}</p>
+                    </div>
+                  ))}
+                </div>
+                <button className={styles.button} onClick={handleDoneClick}>Done</button>
+              </div>
+              )}
+              <button className={styles.button} onClick={handleGetRecommendations}> Get recommendations</button>
           </div>
         </section>
       </main>

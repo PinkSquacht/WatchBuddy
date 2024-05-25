@@ -1,24 +1,30 @@
-// components/SearchBar.js
+// components/SearchBar.jsx
 import { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [term, setTerm] = useState('');
 
-  const handleSearch = (event) => {
-    event.preventDefault();
-    onSearch(searchTerm);
+  const handleInputChange = (e) => {
+    const newTerm = e.target.value;
+    setTerm(newTerm);
+    onSearch(newTerm); //Call onSearch when the input value changes
   };
 
+
   return (
-    <form onSubmit={handleSearch}>
+    <div>
       <input
         type="text"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="Search for a movie..."
+        value={term}
+        onChange={handleInputChange}
+        placeholder="Enter a movie or tv show"
       />
-    </form>
+    </div>
   );
 };
 
 export default SearchBar;
+
+
+
+
