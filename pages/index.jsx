@@ -7,9 +7,10 @@ import { list } from "@chakra-ui/react";
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  const [isStreamingServicesOverlay, setIsStreamingServicesOverlay] = useState(false);
-  const [selectedServices, setSelectedServices] = useState([]); // [Netflix, Hulu, Amazon Prime, HBO Max]
+  const [isGenreOverlayOpen, setIsGenreOverlayOpen] = useState(false);
+  const [isStreamingServicesOverlayOpen, setIsStreamingServicesOverlayOpen] = useState(false);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
   const router = useRouter();
 
   const handleSearch = (term) => {
@@ -22,16 +23,29 @@ const Home = () => {
       console.log('Navigating to recommendations with term:', searchTerm);
       router.push({
         pathname: '/recommendations',
-        query: { movie: searchTerm, services: selectedServices.join(',') },
+        query: { movie: searchTerm, services: selectedServices.join(','), genres: selectedGenres.join(',') },
       });
     } else {
       console.log('Please enter a movie or television show');
     }
-    };
+  };
 
-  const toggleOverlay = () => {
-    setIsOverlayOpen(!isOverlayOpen);
-    setIsStreamingServicesOverlay(isStreaming);
+  const toggleGenreOverlay = () => {
+    setIsGenreOverlayOpen(!isGenreOverlayOpen);
+    setIsStreamingServicesOverlayOpen(false);
+  };
+
+  const toggleStreamingServicesOverlay = () => {
+    setIsStreamingServicesOverlayOpen(!isStreamingServicesOverlayOpen);
+    setIsGenreOverlayOpen(false);
+  };
+
+  const handleGenreClick = (genre) => {
+    setSelectedGenres((prevSelected) =>
+      prevSelected.includes(genre)
+        ? prevSelected.filter((g) => g !== genre)
+        : [...prevSelected, genre]
+    );
   };
 
   const handleServiceClick = (service) => {
@@ -43,7 +57,8 @@ const Home = () => {
   };
 
   const handleDoneClick = () => {
-    setIsOverlayOpen(false);
+    setIsGenreOverlayOpen(false);
+    setIsStreamingServicesOverlayOpen(false);
   };
 
   return (
@@ -58,15 +73,40 @@ const Home = () => {
             <p>Give me something similar to:</p>
             <SearchBar onSearch={handleSearch} />
             <p>Or</p>
-            <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add genre/mood +</p>
-            {isOverlayOpen && (
+            <p onClick={toggleGenreOverlay} style={{cursor: 'pointer'}}>Add genre/mood +</p>
+            {isGenreOverlayOpen && (
               <div className={styles.overlay}>
-                {/* Add your genre/mood here */}
-                <p>Genre/Mood options...</p>
+                <h2>Tell us what you’re in the mood for</h2>
+                <p>Select up to 6 options</p>
+                <div className={styles.options}>
+                  <h3>Genre</h3>
+                  {["Action", "Adventure", "Animation", "Comedy", "Documentary", "Drama", "Fantasy", "Horror", "Musical", "Romantic Comedy", "Sci-Fi", "Thriller/Suspense"].map((genre) => (
+                    <button 
+                      key={genre} 
+                      className={`${styles.optionButton} ${selectedGenres.includes(genre) ? styles.selected : ''}`}
+                      onClick={() => handleGenreClick(genre)}
+                    >
+                      {genre}
+                    </button>
+                  ))}
+                </div>
+                <div className={styles.options}>
+                  <h3>Mood</h3>
+                  {["Cynical", "Funny", "Gripping", "Intense", "Heartwarming", "Lighthearted", "Scary", "Moving", "Tense", "Thought-provoking", "Uplifting"].map((mood) => (
+                    <button 
+                      key={mood} 
+                      className={`${styles.optionButton} ${selectedGenres.includes(mood) ? styles.selected : ''}`}
+                      onClick={() => handleGenreClick(mood)}
+                    >
+                      {mood}
+                    </button>
+                  ))}
+                </div>
+                <button className={styles.button} onClick={handleDoneClick}>Done</button>
               </div>
             )}
             <hr />
-            <p onClick={toggleOverlay} style={{cursor: 'pointer'}}>Add your streaming services (optional) +</p>
+            <p onClick={toggleStreamingServicesOverlay} style={{cursor: 'pointer'}}>Add your streaming services (optional) +</p>
             {selectedServices.length > 0 && (
               <div className={styles.selectedServices}>
                 <p>Selected Services:</p>
@@ -77,7 +117,7 @@ const Home = () => {
                 </ul>
               </div>
             )}
-            {isOverlayOpen && (
+            {isStreamingServicesOverlayOpen && (
               <div className={styles.overlay}>
                 <h2>Add Your Streaming Services</h2>
                 <p style={{ fontSize: '0.8rem', marginBottom: '1rem' }}>For personalized recommendations, tell us where to watch</p>
@@ -95,13 +135,13 @@ const Home = () => {
                 </div>
                 <button className={styles.button} onClick={handleDoneClick}>Done</button>
               </div>
-              )}
-              <button className={styles.button} onClick={handleGetRecommendations}> Get recommendations</button>
+            )}
+            <button className={styles.button} onClick={handleGetRecommendations}>Get recommendations</button>
           </div>
         </section>
       </main>
       <footer className={styles.footer}>
-        <p>&copy; 2024 Watch Buddy. All rights reserved.</p>
+        <p>&copy; 2024 WatchBuddy. All rights reserved.</p>
       </footer>
     </div>
   );
