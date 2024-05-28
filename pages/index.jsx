@@ -8,6 +8,7 @@ import { list } from "@chakra-ui/react";
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+  const [isStreamingServicesOverlay, setIsStreamingServicesOverlay] = useState(false);
   const [selectedServices, setSelectedServices] = useState([]); // [Netflix, Hulu, Amazon Prime, HBO Max]
   const router = useRouter();
 
@@ -21,15 +22,16 @@ const Home = () => {
       console.log('Navigating to recommendations with term:', searchTerm);
       router.push({
         pathname: '/recommendations',
-        query: { mood: searchTerm, services: selectedServices.join(',') },
+        query: { movie: searchTerm, services: selectedServices.join(',') },
       });
     } else {
-      console.log('Please enter a mood');
+      console.log('Please enter a movie or television show');
     }
     };
 
   const toggleOverlay = () => {
     setIsOverlayOpen(!isOverlayOpen);
+    setIsStreamingServicesOverlay(isStreaming);
   };
 
   const handleServiceClick = (service) => {
@@ -77,7 +79,8 @@ const Home = () => {
             )}
             {isOverlayOpen && (
               <div className={styles.overlay}>
-                <h2>Select Your Streaming Services</h2>
+                <h2>Add Your Streaming Services</h2>
+                <p style={{ fontSize: '0.8rem', marginBottom: '1rem' }}>For personalized recommendations, tell us where to watch</p>
                 <div className={styles.services}>
                   {["Netflix", "Hulu", "Amazon Prime", "HBO Max"].map((service) => (
                     <div

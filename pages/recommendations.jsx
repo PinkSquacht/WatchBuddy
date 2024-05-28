@@ -5,14 +5,16 @@ import axios from 'axios';
 
 const Recommendations = () => {
   const router = useRouter();
-  const { mood } = router.query;
+  const { movie, services } = router.query;
   const [recommendations, setRecommendations] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const response = await axios.post('https://chat-w-flask.onrender.com/recommendations', { mood, services });
+        const response = await axios.post('https://chat-w-flask.onrender.com/recommendations', { movie,
+          streaming_services: services ? services.split(',') : [],
+         });
         const recommendationsList = response.data.recommendations.split('\n').map(item => item.trim());
         setRecommendations(recommendationsList);
       } catch (err) {
@@ -20,17 +22,17 @@ const Recommendations = () => {
       }
     };
 
-    if (mood) {
+    if (movie) {
       fetchRecommendations();
     }
-  }, [mood, services]);
+  }, [movie, services]);
 
   console.log('Current recommendations:', recommendations);
   console.log('Current error:', error);
 
   return (
     <div>
-      <h1>Recommendations for {mood}</h1>
+      <h1>Recommendations for {movie}</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {recommendations.length > 0 ? (
         <ul>
