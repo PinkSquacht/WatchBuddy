@@ -47,6 +47,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
+  z-index: 1000;
 }
 
 .optionButton {
@@ -59,8 +60,23 @@
   cursor: pointer;
 }
 
-.optionButton:hover {
+.optionButton.selected {
   background: #555;
+}
+
+.selectedOptions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.selectedOption {
+  background: #0070f3;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
 }
 
 .services {
@@ -79,13 +95,9 @@
   height: 50px;
 }
 
-.selected {
+.service.selected {
   border: 2px solid #fff;
   border-radius: 10px;
-}
-
-.selectedServices {
-  margin: 20px 0;
 }
 
 .button {
@@ -104,4 +116,14 @@
 
 .footer {
   margin-top: 50px;
+}
+
+.plus {
+  color: #aaa;
+  margin-left: 10px;
+}
+
+.checkmark {
+  color: #0f0;
+  margin-left: 10px;
 }
