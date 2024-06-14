@@ -261,7 +261,7 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              mt={8}
+              
               zIndex="1001"
             >
               Done ({selectedCount})
@@ -319,7 +319,7 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              mt={8}
+              
               zIndex="1001"
             >
               Done ({selectedServicesCount})
