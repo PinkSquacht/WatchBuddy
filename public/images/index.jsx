@@ -83,11 +83,11 @@ const Home = () => {
         bg="#001004"
       >
         <Flex direction="column" align="center" pt={4} pb={8}>
-          <Flex align="center" mb={4} width="100%" pl={4}>
-            <Image src="\images\WatchBuddy.png" alt="WatchBuddy Logo" />
-            <Image src="/images/ic_sharp-movie-filter.png" alt="WatchBuddy Text" />
+          <Flex align="center" mb={4}>
+            <Box width="24px" height="24px" bg="brand.300" borderRadius="full" mr={2} />
+            <Text fontSize="lg" fontWeight="bold" textAlign="left">WatchBuddy</Text>
           </Flex>
-          <Heading size="xl" textAlign="left" mb={8} width="100%" pl={4}>
+          <Heading size="xl" textAlign="left" mb={8}>
             Deciding what to watch shouldn’t take forever.
           </Heading>
           <VStack spacing={4} align="flex-start" width="358px">
@@ -95,16 +95,13 @@ const Home = () => {
             <Box p={4} bg="#0B241C" borderRadius="10px" width="100%">
               <VStack spacing={4} align="flex-start">
                 <Flex justify="space-between" align="center" width="100%">
-                  <Flex align="center">
-                    <Text fontSize="md" textAlign="left">Add genre/mood</Text>
-                    <IconButton
-                      icon={<Image src="/images/add-lg.png" alt="Add genre/mood" />}
-                      onClick={toggleGenreOverlay}
-                      bg="transparent"
-                      _hover={{ bg: "transparent" }}
-                      ml={2}
-                    />
-                  </Flex>
+                  <Text fontSize="md" textAlign="left">Add genre/mood</Text>
+                  <IconButton
+                    icon={<Image src="/images/add-lg.png" alt="Add genre/mood" />}
+                    onClick={toggleGenreOverlay}
+                    bg="transparent"
+                    _hover={{ bg: "transparent" }}
+                  />
                 </Flex>
                 {selectedGenres.length > 0 && (
                   <HStack spacing={2} wrap="wrap">
@@ -135,16 +132,13 @@ const Home = () => {
             <Box p={4} bg="#0B241C" borderRadius="10px" width="100%">
               <VStack spacing={4} align="flex-start">
                 <Flex justify="space-between" align="center" width="100%">
-                  <Flex align="center">
-                    <Text fontSize="md" textAlign="left">Add your streaming services (optional)</Text>
-                    <IconButton
-                      icon={<Image src="/images/add-lg.png" alt="Add streaming services" />}
-                      onClick={toggleStreamingServicesOverlay}
-                      bg="transparent"
-                      _hover={{ bg: "transparent" }}
-                      ml={2}
-                    />
-                  </Flex>
+                  <Text fontSize="md" textAlign="left">Add your streaming services (optional)</Text>
+                  <IconButton
+                    icon={<Image src="/images/add-lg.png" alt="Add streaming services" />}
+                    onClick={toggleStreamingServicesOverlay}
+                    bg="transparent"
+                    _hover={{ bg: "transparent" }}
+                  />
                 </Flex>
                 {selectedServices.length > 0 && (
                   <HStack spacing={2} wrap="wrap">

@@ -1,7 +1,11 @@
 // pages/recommendations.jsx
+import { Box, Button, Heading, Input, Text, VStack, HStack, Tag, TagLabel, TagCloseButton, ChakraProvider, IconButton, Image } from "@chakra-ui/react";
+import { CloseIcon, AddIcon } from "@chakra-ui/icons";
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import theme from "@/styles/theme";
+
 
 const Recommendations = () => {
   const router = useRouter();
@@ -31,6 +35,7 @@ const Recommendations = () => {
   console.log('Current error:', error);
 
   return (
+    <ChakraProvider theme={theme}>
     <div>
       <h1>Recommendations for {movie}</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -44,6 +49,7 @@ const Recommendations = () => {
         !error && <p>Loading recommendations...</p>
       )}
     </div>
+    </ChakraProvider>
   );
 };
 
