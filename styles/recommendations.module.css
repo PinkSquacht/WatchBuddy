@@ -1,0 +1,131 @@
+.similarMovieRecommendations {
+    position: relative;
+    width: 390px;
+    height: 2722px;
+    overflow-y: scroll;
+    background: #001004;
+  }
+  
+  .chevronBack {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 16px;
+    top: 76px;
+  }
+  
+  .frame157 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 36px;
+    position: absolute;
+    width: 358px;
+    height: 2843px;
+    left: 16px;
+    top: 110px;
+  }
+  
+  .becauseYouLiked {
+    width: 358px;
+    height: 63px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 31px;
+    color: #E8E8E8;
+  }
+  
+  .recommendationDefault {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 20px;
+    width: 358px;
+    height: 657px;
+  }
+  
+  .frame14 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 20px;
+    width: 358px;
+    height: 657px;
+  }
+  
+  .movieImage {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .movieDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 14px;
+    width: 358px;
+    height: 338px;
+  }
+  
+  .movieTitle {
+    width: 358px;
+    height: 23px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 23px;
+    color: #E8E8E8;
+  }
+  
+  .movieDuration {
+    width: 73px;
+    height: 24px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+    color: #9C9C9C;
+  }
+  
+  .buttons {
+    position: absolute;
+    width: 358px;
+    left: calc(50% - 358px/2);
+    top: 25.61%;
+    bottom: 72.63%;
+    background: #1FDCA3;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+  }
+  
+  .frame102 {
+    box-sizing: border-box;
+    width: 136px;
+    height: 21px;
+    border-bottom: 2px solid #E8E8E8;
+  }
+  
+  .moreInfoOnIMDB {
+    position: absolute;
+    width: 131px;
+    height: 21px;
+    left: 0px;
+    top: 0px;
+    font-family: 'DM Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 21px;
+    letter-spacing: -0.25px;
+    color: #E8E8E8;
+  }
+  
