@@ -8,7 +8,7 @@ const mockRecommendations = [
     title: "The Chronicles of Narnia (2005)",
     duration: "1 hr 56 min",
     service: "Netflix",
-    image: "/images/narnia.png",
+    image: "/images/narnia.jpg",
     rating: "7.9/10",
     synopsis: "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
     reviews: "A magical journey that captures the essence of C.S. Lewis' timeless classic.",
@@ -17,7 +17,7 @@ const mockRecommendations = [
     title: "Miss Peregrine’s Home for Peculiar Children (2016)",
     duration: "2 hr 7 min",
     service: "Hulu",
-    image: "/images/miss_peregrine.png",
+    image: "/images/miss_peregrine.jpg",
     rating: "6.7/10",
     synopsis: "A teenager finds himself transported to an island where he must help protect a group of orphans with special powers from creatures out to destroy them.",
     reviews: "A visually stunning adaptation of the beloved novel, with a dark and whimsical tone.",
@@ -26,7 +26,7 @@ const mockRecommendations = [
     title: "The Spiderwick Chronicles (2008)",
     duration: "1 hr 37 min",
     service: "Hulu",
-    image: "/images/spiderwick.png",
+    image: "/images/spiderwick.jpg",
     rating: "6.5/10",
     synopsis: "Upon moving into the run-down Spiderwick Estate, a family uncovers a fantastical world and a book that holds magical secrets.",
     reviews: "An adventure full of wonder and danger, perfect for young fantasy lovers.",
@@ -61,7 +61,7 @@ const MockRecommendation = () => {
           <Image src="/images/chevron-back.png" alt="Back to home" width="24px" height="24px" />
         </Box>
         <Flex direction="column" align="center" pt={10} pb={8}>
-          <Heading mb={4} textAlign="center">Because you liked "Harry Potter" you might like:</Heading>
+          <Heading mb={4} textAlign="center">Because you liked &quot;Harry Potter&quot; you might like:</Heading>
           <VStack spacing={10} align="flex-start" width="358px">
             {mockRecommendations.map((rec, index) => (
               <VStack key={index} spacing={4} align="flex-start" width="100%">
