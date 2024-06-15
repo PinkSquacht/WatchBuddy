@@ -26,7 +26,7 @@ const mockRecommendations = [
     title: "The Spiderwick Chronicles (2008)",
     duration: "1 hr 37 min",
     service: "Hulu",
-    image: "/images/spiderwick.png",
+    image: "/images/spiderwick.jpg",
     rating: "6.5/10",
     synopsis: "Upon moving into the run-down Spiderwick Estate, a family uncovers a fantastical world and a book that holds magical secrets.",
     reviews: "An adventure full of wonder and danger, perfect for young fantasy lovers.",
