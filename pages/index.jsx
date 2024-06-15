@@ -1,8 +1,7 @@
-import { Box, Button, Heading, Text, VStack, HStack, Tag, TagLabel, TagCloseButton, ChakraProvider, IconButton, Image, Flex, Input, Divider } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack, HStack, IconButton, Image, Flex, Input, Divider, ChakraProvider } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import SearchBar from "@/componets/SearchBar";
 import theme from "@/styles/theme";
 import SelectionButton from "@/componets/SelectionButton";
 import StreamingServiceButton from "@/componets/StreamingServiceButton"; // Import the new component
@@ -184,16 +183,16 @@ const Home = () => {
             </Button>
           </VStack>
         </Flex>
-        <Flex direction="column" align="center" py={8} bg="#0B241C" width="100%">
-          <Flex direction="column" align="center" gap="34px" width="358px">
-            <Flex direction="column" align="center" gap="20px" width="358px">
-              <Text fontSize="md" textAlign="center">About</Text>
-              <Text fontSize="md" textAlign="center">Contact</Text>
-              <Text fontSize="md" textAlign="center">Support</Text>
+        <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="390px" height="393px">
+          <Flex direction="column" align="center" gap="34px" position="absolute" width="358px" height="220px" left="16px" top="47px">
+            <Flex direction="column" align="center" gap="20px" width="358px" height="103px">
+              <Text fontSize="md" textAlign="center" width="47px" height="21px">About</Text>
+              <Text fontSize="md" textAlign="center" width="62px" height="21px">Contact</Text>
+              <Text fontSize="md" textAlign="center" width="62px" height="21px">Support</Text>
             </Flex>
-            <Flex direction="column" align="center" gap="16px" width="358px">
+            <Flex direction="column" align="center" gap="16px" width="358px" height="83px">
               <Image src="/images/ic_sharp-movie-filter.png" alt="Movie Filter Icon" width="47px" height="47px" />
-              <Text fontSize="sm" textAlign="center">© 2024 WatchBuddy</Text>
+              <Text fontSize="sm" textAlign="center" width="358px" height="20px">© 2024 WatchBuddy</Text>
             </Flex>
           </Flex>
         </Flex>
@@ -217,7 +216,7 @@ const Home = () => {
           >
             <IconButton
               position="absolute"
-              top="76px"
+              top="24px" // Adjust to be at the top right corner
               right="24px"
               icon={<CloseIcon />}
               onClick={() => setIsGenreOverlayOpen(false)}
@@ -226,8 +225,8 @@ const Home = () => {
               bg="transparent"
               _hover={{ bg: "transparent" }}
             />
-            <Heading mb={4} textAlign="left">Tell us what you’re in the mood for</Heading>
-            <Text mb={4} textAlign="left">Select up to a total of 6 options</Text>
+            <Heading mb={4} textAlign="center" mt={8}>Tell us what you’re in the mood for</Heading> {/* Added margin-top to align properly */}
+            <Text mb={4} textAlign="center">Select up to a total of 6 options</Text>
             <Flex direction="column" align="flex-start" gap={3} width="358px">
               <Heading size="lg" textAlign="left">Genre</Heading>
               <Box display="flex" flexDirection="row" flexWrap="wrap" gap={2}>
@@ -255,13 +254,13 @@ const Home = () => {
             </Flex>
             <Button
               mt={4} // Add some margin-top to ensure proper spacing
-              width="358px"
+              width="100%" // Ensure button takes full width available
+              maxWidth="358px" // Limit the maximum width to 358px
               bg="#1FDCA3"
               boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedCount})
@@ -288,7 +287,7 @@ const Home = () => {
           >
             <IconButton
               position="absolute"
-              top="76px"
+              top="24px" // Adjust to be at the top right corner
               right="24px"
               icon={<CloseIcon />}
               onClick={() => setIsStreamingServicesOverlayOpen(false)}
@@ -297,8 +296,8 @@ const Home = () => {
               bg="transparent"
               _hover={{ bg: "transparent" }}
             />
-            <Heading mb={4} textAlign="left">Add Your Streaming Services</Heading>
-            <Text mb={4} textAlign="left">For personalized recommendations, tell us where to watch</Text>
+            <Heading mb={4} textAlign="center" mt={8}>Add Your Streaming Services</Heading> {/* Added margin-top to align properly */}
+            <Text mb={4} textAlign="center">For personalized recommendations, tell us where to watch</Text>
             <Flex flexWrap="wrap" gap={4} justifyContent="center">
               {streamingServices.map((service) => (
                 service && (
@@ -313,13 +312,13 @@ const Home = () => {
             </Flex>
             <Button
               mt={4} // Add some margin-top to ensure proper spacing
-              width="358px"
+              width="100%" // Ensure button takes full width available
+              maxWidth="358px" // Limit the maximum width to 358px
               bg="#1FDCA3"
               boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedServicesCount})
