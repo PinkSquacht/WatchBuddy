@@ -183,16 +183,16 @@ const Home = () => {
             </Button>
           </VStack>
         </Flex>
-        <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="390px" height="393px">
-          <Flex direction="column" align="center" gap="34px" position="absolute" width="358px" height="220px" left="16px" top="47px">
-            <Flex direction="column" align="center" gap="20px" width="358px" height="103px">
-              <Text fontSize="md" textAlign="center" width="47px" height="21px">About</Text>
-              <Text fontSize="md" textAlign="center" width="62px" height="21px">Contact</Text>
-              <Text fontSize="md" textAlign="center" width="62px" height="21px">Support</Text>
+        <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="100vw">
+          <Flex direction="column" align="center" gap="34px" position="absolute" width="358px" left="16px" top="47px">
+            <Flex direction="column" align="center" gap="20px" width="100%">
+              <Text fontSize="md" textAlign="center">About</Text>
+              <Text fontSize="md" textAlign="center">Contact</Text>
+              <Text fontSize="md" textAlign="center">Support</Text>
             </Flex>
-            <Flex direction="column" align="center" gap="16px" width="358px" height="83px">
+            <Flex direction="column" align="center" gap="16px" width="100%">
               <Image src="/images/ic_sharp-movie-filter.png" alt="Movie Filter Icon" width="47px" height="47px" />
-              <Text fontSize="sm" textAlign="center" width="358px" height="20px">© 2024 WatchBuddy</Text>
+              <Text fontSize="sm" textAlign="center" width="100%">© 2024 WatchBuddy</Text>
             </Flex>
           </Flex>
         </Flex>
