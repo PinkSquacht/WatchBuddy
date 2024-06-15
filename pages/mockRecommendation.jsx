@@ -1,82 +1,97 @@
-import { Box, Heading, Text, VStack, Image, ChakraProvider, Flex, Button, IconButton } from "@chakra-ui/react";
-import { useRouter } from "next/router";
+import React from 'react';
+import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, ChakraProvider } from "@chakra-ui/react";
 import theme from "@/styles/theme";
-import { ChevronLeftIcon } from "@chakra-ui/icons";
-import styles from '@/styles/recommendations.module.css';
+import { useRouter } from "next/router";
 
 const mockRecommendations = [
   {
-    title: "The Shawshank Redemption",
-    image: "/images/shawshank.jpg",
-    description: "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
-    duration: "2 hr 22 min",
-    service: "Netflix"
+    title: "The Chronicles of Narnia (2005)",
+    duration: "1 hr 56 min",
+    service: "Netflix",
+    image: "/images/narnia.png",
+    rating: "7.9/10",
+    synopsis: "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
+    reviews: "A magical journey that captures the essence of C.S. Lewis' timeless classic.",
   },
   {
-    title: "The Godfather",
-    image: "/images/godfather.jpg",
-    description: "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
-    duration: "2 hr 55 min",
-    service: "Amazon Prime"
+    title: "Miss Peregrine’s Home for Peculiar Children (2016)",
+    duration: "2 hr 7 min",
+    service: "Hulu",
+    image: "/images/miss_peregrine.png",
+    rating: "6.7/10",
+    synopsis: "A teenager finds himself transported to an island where he must help protect a group of orphans with special powers from creatures out to destroy them.",
+    reviews: "A visually stunning adaptation of the beloved novel, with a dark and whimsical tone.",
   },
   {
-    title: "The Dark Knight",
-    image: "/images/dark_knight.jpg",
-    description: "When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham.",
-    duration: "2 hr 32 min",
-    service: "HBO Max"
-  }
+    title: "The Spiderwick Chronicles (2008)",
+    duration: "1 hr 37 min",
+    service: "Hulu",
+    image: "/images/spiderwick.png",
+    rating: "6.5/10",
+    synopsis: "Upon moving into the run-down Spiderwick Estate, a family uncovers a fantastical world and a book that holds magical secrets.",
+    reviews: "An adventure full of wonder and danger, perfect for young fantasy lovers.",
+  },
 ];
 
-const MockRecommendations = () => {
+const MockRecommendation = () => {
   const router = useRouter();
-  const { movie } = router.query;
+
+  const handleGetMoreRecommendations = () => {
+    // This can be updated to fetch more recommendations from the backend when available
+    console.log("Fetching more recommendations...");
+  };
 
   return (
     <ChakraProvider theme={theme}>
-      <Flex direction="column" minH="100vh" p={4} bg="#001004" color="white">
-        <Flex alignItems="center" mb={4}>
-          <IconButton
-            icon={<ChevronLeftIcon />}
-            aria-label="Go back"
-            onClick={() => router.back()}
-            bg="transparent"
-            color="white"
-            _hover={{ bg: "transparent" }}
-          />
-          <Heading ml={4} textAlign="center" flex="1" fontSize="xl">
-            Recommendations for "{movie}"
-          </Heading>
-        </Flex>
-        <VStack spacing={4} align="stretch" flex="1">
-          {mockRecommendations.map((rec, index) => (
-            <Box key={index} p={4} bg="#0B241C" borderRadius="10px">
-              <Flex direction={{ base: 'column', md: 'row' }} align="center" gap={4}>
-                <Image src={rec.image} alt={rec.title} borderRadius="10px" boxSize="150px" />
-                <VStack align="flex-start" spacing={1}>
-                  <Heading size="md">{rec.title}</Heading>
-                  <Text>{rec.duration}</Text>
-                  <Text>{rec.description}</Text>
-                  <Text>Available on: {rec.service}</Text>
-                </VStack>
-              </Flex>
-            </Box>
-          ))}
-        </VStack>
-        <Box mt={4} mb={4}>
-          <Button
-            width="100%"
-            bg="#1FDCA3"
-            boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
-            borderRadius="10px"
-            onClick={() => console.log("Refresh Results")}
-          >
-            Refresh Results
-          </Button>
+      <Box
+        position="relative"
+        width="100vw"
+        minHeight="100vh"
+        overflowY="scroll"
+        bg="#001004"
+        color="white"
+      >
+        <Box
+          position="absolute"
+          top="76px"
+          left="16px"
+          cursor="pointer"
+          onClick={() => router.push('/')}
+        >
+          <Image src="/images/chevron-back.png" alt="Back to home" width="24px" height="24px" />
         </Box>
-      </Flex>
+        <Flex direction="column" align="center" pt={10} pb={8}>
+          <Heading mb={4} textAlign="center">Because you liked "Harry Potter" you might like:</Heading>
+          <VStack spacing={10} align="flex-start" width="358px">
+            {mockRecommendations.map((rec, index) => (
+              <VStack key={index} spacing={4} align="flex-start" width="100%">
+                <Heading size="md" textAlign="left">{rec.title}</Heading>
+                <HStack spacing={2}>
+                  <Text>{rec.duration}</Text>
+                  <Image src={`/images/${rec.service.toLowerCase().replace(' ', '_')}_logo.png`} alt={`${rec.service} logo`} width="39px" height="24px" />
+                </HStack>
+                <Image src={rec.image} alt={rec.title} borderRadius="10px" width="100%" />
+                <VStack spacing={2} align="flex-start">
+                  <Text><strong>Rating:</strong> {rec.rating}</Text>
+                  <Text><strong>Synopsis:</strong> {rec.synopsis}</Text>
+                  <Text><strong>Reviews:</strong> {rec.reviews}</Text>
+                </VStack>
+              </VStack>
+            ))}
+            <Button
+              width="100%"
+              bg="#1FDCA3"
+              boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
+              borderRadius="10px"
+              onClick={handleGetMoreRecommendations}
+            >
+              Get More Recommendations
+            </Button>
+          </VStack>
+        </Flex>
+      </Box>
     </ChakraProvider>
   );
 };
 
-export default MockRecommendations;
+export default MockRecommendation;
