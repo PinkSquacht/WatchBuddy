@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Text, VStack, HStack, Tag, TagLabel, TagCloseButton, ChakraProvider, IconButton, Image, Flex, Input, Divider } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack, HStack, IconButton, Image, Flex, Input, Divider, ChakraProvider } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -92,8 +92,8 @@ const Home = () => {
       >
         <Flex direction="column" align="center" pt={4} pb={8}>
           <Flex align="center" mb={4} width="100%" pl={4}>
-            <Image src="/images/WatchBuddy3x.png" alt="WatchBuddy Logo" width={24} />
-            <Image src="/images/SmwatchBuddy3x.png" alt="Second Image" ml={1} />
+            <Image src="/images/WatchBuddy.png" alt="WatchBuddy Logo" />
+            <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" ml={1} />
           </Flex>
           <Heading size="xl" textAlign="left" mb={8} width="100%" pl={4}>
             Deciding what to watch shouldn’t take forever.
@@ -217,8 +217,8 @@ const Home = () => {
           >
             <IconButton
               position="absolute"
-              top="76px"
-              right="24px"
+              top="24px" // Adjusted for the top-right corner
+              right="24px" // Adjusted for the top-right corner
               icon={<CloseIcon />}
               onClick={() => setIsGenreOverlayOpen(false)}
               colorScheme="whiteAlpha"
@@ -287,8 +287,8 @@ const Home = () => {
           >
             <IconButton
               position="absolute"
-              top="76px"
-              right="24px"
+              top="24px" // Adjusted for the top-right corner
+              right="24px" // Adjusted for the top-right corner
               icon={<CloseIcon />}
               onClick={() => setIsStreamingServicesOverlayOpen(false)}
               colorScheme="whiteAlpha"
