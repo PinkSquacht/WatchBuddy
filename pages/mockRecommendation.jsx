@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, ChakraProvider } from "@chakra-ui/react";
+import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, ChakraProvider, IconButton } from "@chakra-ui/react";
+import { ChevronLeftIcon } from "@chakra-ui/icons"; // Import the ChevronLeftIcon from @chakra-ui/icons
 import theme from "@/styles/theme";
 import { useRouter } from "next/router";
 
@@ -11,7 +12,7 @@ const mockRecommendations = [
     image: "/images/narnia.jpg",
     rating: "7.9/10",
     synopsis: "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
-    reviews: "A magical journey that captures the essence of C.S. Lewis&apos; timeless classic.",
+    reviews: "A magical journey that captures the essence of C.S. Lewis' timeless classic.",
   },
   {
     title: "Miss Peregrine’s Home for Peculiar Children (2016)",
@@ -41,6 +42,21 @@ const MockRecommendation = () => {
     console.log("Fetching more recommendations...");
   };
 
+  const getServiceLogo = (service) => {
+    switch (service.toLowerCase()) {
+      case 'netflix':
+        return '/images/netflix_logo.png';
+      case 'hulu':
+        return '/images/hulu_logo.png';
+      case 'amazon prime':
+        return '/images/prime_logo.png';
+      case 'hbo max':
+        return '/images/hbo_max_logo.png';
+      default:
+        return '';
+    }
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <Box
@@ -50,16 +66,19 @@ const MockRecommendation = () => {
         overflowY="scroll"
         bg="#001004"
         color="white"
+        padding="16px"
       >
-        <Box
+        <IconButton
           position="absolute"
-          top="76px"
+          top="16px"
           left="16px"
-          cursor="pointer"
+          icon={<ChevronLeftIcon w={6} h={6} />}
           onClick={() => router.push('/')}
-        >
-          <Image src="/images/chevron-back.png" alt="Back to home" width="24px" height="24px" />
-        </Box>
+          aria-label="Back to home"
+          bg="transparent"
+          _hover={{ bg: "transparent" }}
+          color="white"
+        />
         <Flex direction="column" align="center" pt={10} pb={8}>
           <Heading mb={4} textAlign="center">Because you liked &quot;Harry Potter&quot; you might like:</Heading>
           <VStack spacing={10} align="flex-start" width="358px">
@@ -68,7 +87,7 @@ const MockRecommendation = () => {
                 <Heading size="md" textAlign="left">{rec.title}</Heading>
                 <HStack spacing={2}>
                   <Text>{rec.duration}</Text>
-                  <Image src={`/images/${rec.service.toLowerCase().replace(' ', '_')}_logo.png`} alt={`${rec.service} logo`} width="39px" height="24px" />
+                  <Image src={getServiceLogo(rec.service)} alt={`${rec.service} logo`} width="30px" height="18px" />
                 </HStack>
                 <Image src={rec.image} alt={rec.title} borderRadius="10px" width="100%" />
                 <VStack spacing={2} align="flex-start">
