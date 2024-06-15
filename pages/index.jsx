@@ -183,7 +183,7 @@ const Home = () => {
             </Button>
           </VStack>
         </Flex>
-        <Box as="footer" width="100%" bg="#0B241C" py={8} position="absolute" bottom={0}>
+        <Box as="footer" width="100%" bg="#0B241C" py={8} position="relative" mt="auto">
           <Flex direction="column" align="center" gap="34px" width="100%">
             <Flex direction="column" align="center" gap="20px">
               <Text fontSize="md" textAlign="center">About</Text>
