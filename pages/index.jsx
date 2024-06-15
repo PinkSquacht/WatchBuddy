@@ -92,7 +92,7 @@ const Home = () => {
       >
         <Flex direction="column" align="center" pt={4} pb={8}>
           <Flex align="center" mb={4} width="100%" pl={4}>
-            <Image src="/images/WatchBuddy.png" alt="WatchBuddy Logo" />
+            <Image src="/images/WatchBuddy3x.png" alt="WatchBuddy Logo" width={24}/>
             <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" ml={1} />
           </Flex>
           <Heading size="xl" textAlign="left" mb={8} width="100%" pl={4}>
@@ -184,16 +184,16 @@ const Home = () => {
             </Button>
           </VStack>
         </Flex>
-        <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="100%">
-          <Flex direction="column" align="center" gap="34px" width="358px" height="220px" mt="47px">
-            <Flex direction="column" align="center" gap="20px" width="100%" height="103px">
+        <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="390px" height="393px">
+          <Flex direction="column" align="center" gap="34px" position="absolute" width="358px" height="220px" left="16px" top="47px">
+            <Flex direction="column" align="center" gap="20px" width="358px" height="103px">
               <Text fontSize="md" textAlign="center" width="47px" height="21px">About</Text>
               <Text fontSize="md" textAlign="center" width="62px" height="21px">Contact</Text>
               <Text fontSize="md" textAlign="center" width="62px" height="21px">Support</Text>
             </Flex>
-            <Flex direction="column" align="center" gap="16px" width="100%" height="83px">
+            <Flex direction="column" align="center" gap="16px" width="358px" height="83px">
               <Image src="/images/ic_sharp-movie-filter.png" alt="Movie Filter Icon" width="47px" height="47px" />
-              <Text fontSize="sm" textAlign="center" width="100%" height="20px">© 2024 WatchBuddy</Text>
+              <Text fontSize="sm" textAlign="center" width="358px" height="20px">© 2024 WatchBuddy</Text>
             </Flex>
           </Flex>
         </Flex>
@@ -226,8 +226,8 @@ const Home = () => {
               bg="transparent"
               _hover={{ bg: "transparent" }}
             />
-            <Heading mb={4} textAlign="left">Tell us what you’re in the mood for</Heading>
-            <Text mb={4} textAlign="left">Select up to a total of 6 options</Text>
+            <Heading mb={4} textAlign="center">Tell us what you’re in the mood for</Heading>
+            <Text mb={4} textAlign="center">Select up to a total of 6 options</Text>
             <Flex direction="column" align="flex-start" gap={3} width="358px">
               <Heading size="lg" textAlign="left">Genre</Heading>
               <Box display="flex" flexDirection="row" flexWrap="wrap" gap={2}>
@@ -261,7 +261,6 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedCount})
@@ -297,8 +296,8 @@ const Home = () => {
               bg="transparent"
               _hover={{ bg: "transparent" }}
             />
-            <Heading mb={4} textAlign="left">Add Your Streaming Services</Heading>
-            <Text mb={4} textAlign="left">For personalized recommendations, tell us where to watch</Text>
+            <Heading mb={4} textAlign="center">Add Your Streaming Services</Heading>
+            <Text mb={4} textAlign="center">For personalized recommendations, tell us where to watch</Text>
             <Flex flexWrap="wrap" gap={4} justifyContent="center">
               {streamingServices.map((service) => (
                 service && (
@@ -319,7 +318,6 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedServicesCount})
