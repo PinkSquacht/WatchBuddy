@@ -19,7 +19,7 @@ const SelectionButton = ({ label, isSelected, onClick }) => {
       _hover={{ bg: "#3B5A4A" }}
     >
       <Text noOfLines={1} color="#E6E7FF" fontSize="sm">{label}</Text>
-      <Text color="#E6E7FF" fontSize="sm">{isSelected ? '✓' : '+'}</Text>
+      <Text color="#E6E7FF" fontSize="sm">{isSelected ? 'x' : '+'}</Text>
     </Box>
   );
 };

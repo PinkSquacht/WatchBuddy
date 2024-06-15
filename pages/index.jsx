@@ -92,7 +92,7 @@ const Home = () => {
         <Flex direction="column" align="center" pt={4} pb={8}>
           <Flex align="center" mb={4} width="100%" pl={4}>
             <Image src="/images/WatchBuddy.png" alt="WatchBuddy Logo" />
-            <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" ml={.5} />
+            <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" ml={1} />
           </Flex>
           <Heading size="xl" textAlign="left" mb={8} width="100%" pl={4}>
             Deciding what to watch shouldn’t take forever.
@@ -184,13 +184,13 @@ const Home = () => {
           </VStack>
         </Flex>
         <Box as="footer" width="100%" bg="#0B241C" py={8} position="relative" mt="auto">
-          <Flex direction="column" align="center" gap="34px" width="100%">
-            <Flex direction="column" align="center" gap="20px">
+          <Flex direction="column" align="center" gap="34px" maxWidth="358px" mx="auto">
+            <Flex direction="column" align="center" gap="20px" width="358px">
               <Text fontSize="md" textAlign="center">About</Text>
               <Text fontSize="md" textAlign="center">Contact</Text>
               <Text fontSize="md" textAlign="center">Support</Text>
             </Flex>
-            <Flex direction="column" align="center" gap="16px">
+            <Flex direction="column" align="center" gap="16px" width="358px">
               <Image src="/images/ic_sharp-movie-filter.png" alt="Movie Filter Icon" width="47px" height="47px" />
               <Text fontSize="sm" textAlign="center">© 2024 WatchBuddy</Text>
             </Flex>
