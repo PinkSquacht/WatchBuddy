@@ -93,7 +93,7 @@ const Home = () => {
         <Flex direction="column" align="center" pt={4} pb={8}>
           <Flex align="center" mb={4} width="100%" pl={4}>
             <Image src="/images/WatchBuddy.png" alt="WatchBuddy Logo" />
-            <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" ml={1} />
+            <Image src="/images/ic_sharp-movie-filter.png" alt="Second Image" width={24} height={24} ml={1} />
           </Flex>
           <Heading size="xl" textAlign="left" mb={8} width="100%" pl={4}>
             Deciding what to watch shouldn’t take forever.
