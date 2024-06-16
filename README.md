@@ -1,5 +1,5 @@
 WatchBuddy
-Welcome to WatchBuddy! This application helps you decide what to watch by providing personalized recommendations based on your selected genres, moods, and streaming services.
+WatchBuddy is an application that helps you decide what to watch by providing personalized recommendations based on your selected genres, moods, and streaming services.
 
 Table of Contents
 Tech Stack
@@ -81,3 +81,5 @@ Create a new branch (git checkout -b feature/YourFeature).
 Commit your changes (git commit -m 'Add your feature').
 Push to the branch (git push origin feature/YourFeature).
 Open a Pull Request.
+License
+This project is licensed under the MIT License.
