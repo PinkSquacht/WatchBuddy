@@ -145,7 +145,7 @@ const MockRecommendation = () => {
               borderRadius="10px"
               onClick={handleGetMoreRecommendations}
             >
-              Get More Recommendations
+              Refresh resualts
             </Button>
           </VStack>
         </Flex>
