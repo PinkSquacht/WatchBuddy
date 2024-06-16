@@ -25,13 +25,13 @@ npm or yarn
 Installation
 Clone the repository:
 
-sh
+
 Copy code
 git clone https://github.com/YourUsername/WatchBuddy.git
 cd WatchBuddy
 Install dependencies:
 
-sh
+
 Copy code
 npm install
 # or
@@ -39,7 +39,6 @@ yarn install
 Running the Application
 Start the development server:
 
-sh
 Copy code
 npm run dev
 # or
@@ -54,25 +53,7 @@ Click "Get Recommendations" to receive personalized movie recommendations.
 Project Structure
 arduino
 Copy code
-├── public
-│   ├── images
-│   │   └── (all image assets)
-├── src
-│   ├── components
-│   │   ├── SearchBar.jsx
-│   │   ├── SelectionButton.jsx
-│   │   ├── StreamingServiceButton.jsx
-│   ├── pages
-│   │   ├── index.jsx
-│   │   ├── mockRecommendation.jsx
-│   ├── styles
-│   │   └── theme.js
-├── .eslintrc.json
-├── .gitignore
-├── next.config.js
-├── package.json
-├── README.md
-└── vercel.json
+
 Contributing
 We welcome contributions to improve WatchBuddy. To contribute:
 
