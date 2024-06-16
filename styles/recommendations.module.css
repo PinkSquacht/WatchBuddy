@@ -106,15 +106,29 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
   }
+  .imdbLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 167px;
+    height: 24px;
+    flex: none;
+    order: 4;
+    flex-grow: 0;
+  }
   
   .frame102 {
     box-sizing: border-box;
     width: 136px;
     height: 21px;
     border-bottom: 2px solid #E8E8E8;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
   }
   
-  .moreInfoOnIMDB {
+  .moreInfoOnImdb {
     position: absolute;
     width: 131px;
     height: 21px;
@@ -129,3 +143,21 @@
     color: #E8E8E8;
   }
   
+  .caretSm {
+    width: 24px;
+    height: 24px;
+    transform: rotate(-180deg);
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .vector {
+    position: absolute;
+    left: 63.54%;
+    right: 13.47%;
+    top: 69.79%;
+    bottom: -9.45%;
+    background: #E8E8E8;
+    transform: rotate(-180deg);
+  }

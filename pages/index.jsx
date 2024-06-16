@@ -1,17 +1,15 @@
-import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, Input, Divider, ChakraProvider, IconButton } from "@chakra-ui/react";
-import { CloseIcon, ChevronLeftIcon } from "@chakra-ui/icons";
+import { Box, Button, Heading, Text, VStack, HStack, Flex, Input, Divider, ChakraProvider, IconButton, Image } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import SearchBar from "@/componets/SearchBar";
 import theme from "@/styles/theme";
 import SelectionButton from "@/componets/SelectionButton";
-import StreamingServiceButton from "@/componets/StreamingServiceButton"; // Import the new component
 
 const streamingServices = [
-  { name: "Netflix", image: "/images/netflix.png" },
-  { name: "Hulu", image: "/images/hulu.png" },
-  { name: "Amazon Prime", image: "/images/amazon_prime.png" },
-  { name: "HBO Max", image: "/images/hbo_max.png" },
+  { name: "Netflix" },
+  { name: "Hulu" },
+  { name: "Amazon Prime" },
+  { name: "HBO Max" },
 ];
 
 const genresAndMoods = ["Action", "Adventure", "Animation", "Comedy", "Documentary", "Drama", "Fantasy", "Horror", "Musical", "Romantic Comedy", "Sci-Fi", "Thriller/Suspense", "Cynical", "Funny", "Gripping", "Intense", "Heartwarming", "Lighthearted", "Scary", "Moving", "Tense", "Thought-provoking", "Uplifting"];
@@ -81,6 +79,9 @@ const Home = () => {
   const selectedCount = selectedGenres.length;
   const selectedServicesCount = selectedServices.length;
 
+  // Determine if the "Get Recommendations" button should be disabled
+  const isGetRecommendationsDisabled = selectedGenres.length === 0 || selectedServices.length === 0;
+
   return (
     <ChakraProvider theme={theme}>
       <Box
@@ -129,7 +130,7 @@ const Home = () => {
                 {selectedGenres.length > 0 && <Text cursor="pointer" textAlign="left" onClick={handleClearAll}>Clear all</Text>}
                 <Divider borderColor="rgba(150, 150, 150, 0.43)" />
                 <Flex direction="column" align="flex-start" width="100%">
-                  <Text fontSize="md" textAlign="left" mb={2}>Find similar movies to...</Text> {/* Added mb={2} */}
+                  <Text fontSize="md" textAlign="left" mb={2}>Find similar movies to...</Text>
                   <Input
                     placeholder="Enter movie title(s)"
                     value={searchTerm}
@@ -158,27 +159,25 @@ const Home = () => {
                 </Flex>
                 {selectedServices.length > 0 && (
                   <HStack spacing={2} wrap="wrap">
-                    {selectedServices.map((service) => {
-                      const foundService = streamingServices.find(s => s.name === service);
-                      return foundService && (
-                        <StreamingServiceButton
-                          key={foundService.name}
-                          service={foundService}
-                          isSelected={selectedServices.includes(foundService.name)}
-                          onClick={() => handleServiceClick(foundService.name)}
-                        />
-                      );
-                    })}
+                    {selectedServices.map((service) => (
+                      <SelectionButton
+                        key={service}
+                        label={service}
+                        isSelected={selectedServices.includes(service)}
+                        onClick={() => handleServiceClick(service)}
+                      />
+                    ))}
                   </HStack>
                 )}
               </VStack>
             </Box>
             <Button
               width="100%"
-              bg="#1FDCA3"
+              bg={isGetRecommendationsDisabled ? "#9C9C9C" : "#1FDCA3"}
               boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
               borderRadius="10px"
               onClick={handleGetRecommendations}
+              isDisabled={isGetRecommendationsDisabled}
             >
               Get Recommendations
             </Button>
@@ -230,7 +229,6 @@ const Home = () => {
               position="absolute"
               top="16px"
               left="16px"
-              icon={<ChevronLeftIcon />}
               onClick={() => setIsGenreOverlayOpen(false)}
               colorScheme="whiteAlpha"
               color="white"
@@ -311,7 +309,6 @@ const Home = () => {
               position="absolute"
               top="16px"
               left="16px"
-              icon={<ChevronLeftIcon />}
               onClick={() => setIsStreamingServicesOverlayOpen(false)}
               colorScheme="whiteAlpha"
               color="white"
@@ -319,13 +316,13 @@ const Home = () => {
               _hover={{ bg: "transparent" }}
             />
             <Heading mb={4} textAlign="center">Add Your Streaming Services</Heading>
-            <Text mb={4} textAlign="center">For personalized recommendations, tell us where to watch</Text>
+            <Text mb={4} textAlign="center">For personalized recommendations, tell us where you watch.</Text>
             <Flex flexWrap="wrap" gap={4} justifyContent="center">
               {streamingServices.map((service) => (
                 service && (
-                  <StreamingServiceButton
+                  <SelectionButton
                     key={service.name}
-                    service={service}
+                    label={service.name}
                     isSelected={selectedServices.includes(service.name)}
                     onClick={() => handleServiceClick(service.name)}
                   />

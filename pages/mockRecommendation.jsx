@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, ChakraProvider, IconButton } from "@chakra-ui/react";
-import { ChevronLeftIcon } from "@chakra-ui/icons"; // Import the ChevronLeftIcon from @chakra-ui/icons
+import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, ChakraProvider } from "@chakra-ui/react";
+import { ChevronRightIcon, ChevronLeftIcon } from "@chakra-ui/icons"; // Import the chevron icon from Chakra UI
 import theme from "@/styles/theme";
 import { useRouter } from "next/router";
 
@@ -11,6 +11,7 @@ const mockRecommendations = [
     service: "Netflix",
     image: "/images/narnia.jpg",
     rating: "7.9/10",
+    rottenTomatoesRating: "78% critic score, 78% audience score",
     synopsis: "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
     reviews: "A magical journey that captures the essence of C.S. Lewis' timeless classic.",
   },
@@ -20,6 +21,7 @@ const mockRecommendations = [
     service: "Hulu",
     image: "/images/miss_peregrine.jpg",
     rating: "6.7/10",
+    rottenTomatoesRating: " 65% critic score, 63% audience score",
     synopsis: "A teenager finds himself transported to an island where he must help protect a group of orphans with special powers from creatures out to destroy them.",
     reviews: "A visually stunning adaptation of the beloved novel, with a dark and whimsical tone.",
   },
@@ -29,6 +31,7 @@ const mockRecommendations = [
     service: "Hulu",
     image: "/images/spiderwick.jpg",
     rating: "6.5/10",
+    rottenTomatoesRating: "73% critic score, 68% audience score",
     synopsis: "Upon moving into the run-down Spiderwick Estate, a family uncovers a fantastical world and a book that holds magical secrets.",
     reviews: "An adventure full of wonder and danger, perfect for young fantasy lovers.",
   },
@@ -51,7 +54,7 @@ const MockRecommendation = () => {
       case 'amazon prime':
         return '/images/prime_logo.png';
       case 'hbo max':
-        return '/images/hbo_max_logo.png';
+        return '/images/hbos_logo.png';
       default:
         return '';
     }
@@ -66,34 +69,68 @@ const MockRecommendation = () => {
         overflowY="scroll"
         bg="#001004"
         color="white"
-        padding="16px"
       >
-        <IconButton
-          position="absolute"
-          top="16px"
-          left="16px"
-          icon={<ChevronLeftIcon w={6} h={6} />}
-          onClick={() => router.push('/')}
-          aria-label="Back to home"
-          bg="transparent"
-          _hover={{ bg: "transparent" }}
-          color="white"
-        />
         <Flex direction="column" align="center" pt={10} pb={8}>
-          <Heading mb={4} textAlign="center">Because you liked &quot;Harry Potter&quot; you might like:</Heading>
+          <Box
+            position="absolute"
+            top="16px"
+            left="16px"
+            cursor="pointer"
+            onClick={() => router.push('/')}
+          >
+            <ChevronLeftIcon
+              color="white"
+              width="24px"
+              height="24px"
+            />
+          </Box>
+          <Heading mb={4} textAlign="center" mt="40px"> {/* Adjust margin-top to create space */}
+            Because you liked &quot;Harry Potter&quot; you might like:
+          </Heading>
           <VStack spacing={10} align="flex-start" width="358px">
             {mockRecommendations.map((rec, index) => (
               <VStack key={index} spacing={4} align="flex-start" width="100%">
                 <Heading size="md" textAlign="left">{rec.title}</Heading>
                 <HStack spacing={2}>
                   <Text>{rec.duration}</Text>
-                  <Image src={getServiceLogo(rec.service)} alt={`${rec.service} logo`} width="30px" height="18px" />
+                  <Image src={getServiceLogo(rec.service)} alt={`${rec.service} logo`} width="30px" height="15px" />
                 </HStack>
                 <Image src={rec.image} alt={rec.title} borderRadius="10px" width="100%" />
                 <VStack spacing={2} align="flex-start">
                   <Text><strong>Rating:</strong> {rec.rating}</Text>
+                  <Text><strong>Rotten Tomatoes:</strong> {rec.rottenTomatoesRating}</Text>
                   <Text><strong>Synopsis:</strong> {rec.synopsis}</Text>
                   <Text><strong>Reviews:</strong> {rec.reviews}</Text>
+                  <HStack
+                    spacing={0} // Adjust spacing between text and icon
+                    display="flex"
+                    alignItems="center"
+                    width="167px"
+                    height="24px"
+                  >
+                    <Box
+                      width="136px"
+                      height="21px"
+                      borderBottom="2px solid #E8E8E8"
+                    >
+                      <Text
+                        fontFamily="'DM Sans'"
+                        fontStyle="normal"
+                        fontWeight="400"
+                        fontSize="16px"
+                        lineHeight="21px"
+                        letterSpacing="-0.25px"
+                        color="#E8E8E8"
+                      >
+                        More info on IMDB
+                      </Text>
+                    </Box>
+                    <ChevronRightIcon
+                      color="white"
+                      width="24px"
+                      height="24px"
+                    />
+                  </HStack>
                 </VStack>
               </VStack>
             ))}
