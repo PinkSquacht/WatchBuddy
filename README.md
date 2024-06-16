@@ -28,8 +28,11 @@ Clone the repository:
 
 
 Copy code
+
 git clone https://github.com/YourUsername/WatchBuddy.git
+
 cd WatchBuddy
+
 Install dependencies:
 
 
