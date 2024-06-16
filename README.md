@@ -1,4 +1,5 @@
 WatchBuddy
+
 WatchBuddy is an application that helps you decide what to watch by providing personalized recommendations based on your selected genres, moods, and streaming services.
 
 Table of Contents
