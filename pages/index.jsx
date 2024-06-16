@@ -1,5 +1,5 @@
-import { Box, Button, Heading, Text, VStack, HStack, Tag, TagLabel, TagCloseButton, ChakraProvider, IconButton, Image, Flex, Input, Divider } from "@chakra-ui/react";
-import { CloseIcon, ChevronLeftIcon } from "@chakra-ui/icons"; // Add ChevronLeftIcon
+import { Box, Button, Heading, Text, VStack, HStack, Image, Flex, Input, Divider, ChakraProvider, IconButton } from "@chakra-ui/react";
+import { CloseIcon, ChevronLeftIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import SearchBar from "@/componets/SearchBar";
@@ -185,13 +185,13 @@ const Home = () => {
           </VStack>
         </Flex>
         <Flex direction="column" align="center" py={8} bg="#0B241C" position="relative" width="100%">
-          <Flex direction="column" align="center" gap="34px" position="absolute" width="358px" height="220px" left="16px" top="47px">
-            <Flex direction="column" align="center" gap="20px" width="358px" height="103px">
+          <Flex direction="column" align="center" gap="34px" width="100%">
+            <Flex direction="column" align="center" gap="20px" width="358px">
               <Text fontSize="md" textAlign="center" width="47px" height="21px">About</Text>
               <Text fontSize="md" textAlign="center" width="62px" height="21px">Contact</Text>
               <Text fontSize="md" textAlign="center" width="62px" height="21px">Support</Text>
             </Flex>
-            <Flex direction="column" align="center" gap="16px" width="358px" height="83px">
+            <Flex direction="column" align="center" gap="16px" width="358px">
               <Image src="/images/ic_sharp-movie-filter.png" alt="Movie Filter Icon" width="47px" height="47px" />
               <Text fontSize="sm" textAlign="center" width="358px" height="20px">© 2024 WatchBuddy</Text>
             </Flex>
@@ -220,6 +220,17 @@ const Home = () => {
               top="16px"
               right="16px"
               icon={<CloseIcon />}
+              onClick={() => setIsGenreOverlayOpen(false)}
+              colorScheme="whiteAlpha"
+              color="white"
+              bg="transparent"
+              _hover={{ bg: "transparent" }}
+            />
+            <IconButton
+              position="absolute"
+              top="16px"
+              left="16px"
+              icon={<ChevronLeftIcon />}
               onClick={() => setIsGenreOverlayOpen(false)}
               colorScheme="whiteAlpha"
               color="white"
@@ -261,7 +272,6 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedCount})
@@ -297,6 +307,17 @@ const Home = () => {
               bg="transparent"
               _hover={{ bg: "transparent" }}
             />
+            <IconButton
+              position="absolute"
+              top="16px"
+              left="16px"
+              icon={<ChevronLeftIcon />}
+              onClick={() => setIsStreamingServicesOverlayOpen(false)}
+              colorScheme="whiteAlpha"
+              color="white"
+              bg="transparent"
+              _hover={{ bg: "transparent" }}
+            />
             <Heading mb={4} textAlign="center">Add Your Streaming Services</Heading>
             <Text mb={4} textAlign="center">For personalized recommendations, tell us where to watch</Text>
             <Flex flexWrap="wrap" gap={4} justifyContent="center">
@@ -319,7 +340,6 @@ const Home = () => {
               borderRadius="10px"
               onClick={handleDoneClick}
               position="relative" // Changed from fixed
-              
               zIndex="1001"
             >
               Done ({selectedServicesCount})
