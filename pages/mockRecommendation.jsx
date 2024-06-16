@@ -97,11 +97,10 @@ const MockRecommendation = () => {
                 <Heading size="md" textAlign="left">{rec.title}</Heading>
                 <HStack spacing={2}>
                   <Text>{rec.duration}</Text>
-                  <Image src={getServiceLogo(rec.service)} alt={`${rec.service} logo`} width="px" height="15px" />
+                  <Image src={getServiceLogo(rec.service)} alt={`${rec.service} logo`} width="24px" height="15px" />
                 </HStack>
                 <Image src={rec.image} alt={rec.title} borderRadius="10px" width="100%" />
                 <VStack spacing={2} align="flex-start">
-                  <Text><strong>Rating:</strong> {rec.rating}</Text>
                   <Text><strong>Similarity:</strong> {rec.similarity}</Text>
                   <Text><strong>Rotten Tomatoes:</strong> {rec.rottenTomatoesRating}</Text>
                   <Text><strong>Synopsis:</strong> {rec.synopsis}</Text>
