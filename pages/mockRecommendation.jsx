@@ -10,7 +10,7 @@ const mockRecommendations = [
     duration: "1 hr 56 min",
     service: "Netflix",
     image: "/images/narnia.jpg",
-    similarity: "80%; Both Narnia and Harry Potter whisk young heroes to hidden magical worlds for battles between good and evil. ",
+    similarity: "80%; Both Narnia and Harry Potter whisk young heroes to hidden magical worlds for battles between good and evil.",
     rating: "7.9/10",
     rottenTomatoesRating: "78% critic score, 78% audience score",
     synopsis: "Four kids travel through a wardrobe to the land of Narnia and learn of their destiny to free it with the guidance of a mystical lion.",
@@ -33,7 +33,6 @@ const mockRecommendations = [
     service: "Hulu",
     image: "/images/spiderwick.jpg",
     similarity: " 60%; The Spiderwick Chronicles (hidden world, magical creatures, young heroes) share Harry Potter's wonder and adventure, but with a lighter, more nature-oriented tone",
-
     rating: "6.5/10",
     rottenTomatoesRating: "73% critic score, 68% audience score",
     synopsis: "Upon moving into the run-down Spiderwick Estate, a family uncovers a fantastical world and a book that holds magical secrets.",
@@ -73,6 +72,7 @@ const MockRecommendation = () => {
         overflowY="scroll"
         bg="#001004"
         color="white"
+        pb="80px" // Add padding to the bottom to ensure content is not hidden behind the button
       >
         <Flex direction="column" align="center" pt={10} pb={8}>
           <Box
@@ -88,7 +88,7 @@ const MockRecommendation = () => {
               height="24px"
             />
           </Box>
-          <Heading mb={4} textAlign="center" mt="40px"> {/* Adjust margin-top to create space */}
+          <Heading mb={4} textAlign="left" mt="40px" width="358px"> {/* Adjust margin-top and width to align with other text */}
             Because you liked &quot;Harry Potter&quot; you might like:
           </Heading>
           <VStack spacing={10} align="flex-start" width="358px">
@@ -118,7 +118,7 @@ const MockRecommendation = () => {
                       borderBottom="2px solid #E8E8E8"
                     >
                       <Text
-                        fontFamily="'DM Sans'"
+                        fontFamily="body" // Use the body font
                         fontStyle="normal"
                         fontWeight="400"
                         fontSize="16px"
@@ -138,18 +138,23 @@ const MockRecommendation = () => {
                 </VStack>
               </VStack>
             ))}
-            <Button
-              width="100%"
-              bg="#1FDCA3"
-              boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
-              borderRadius="10px"
-              onClick={handleGetMoreRecommendations}
-            >
-              Refresh resualts
-            </Button>
           </VStack>
         </Flex>
       </Box>
+      <Button
+        width="100%"
+        bg="#1FDCA3"
+        boxShadow="1px 1px 5px rgba(0, 0, 0, 0.25)"
+        borderRadius="10px"
+        onClick={handleGetMoreRecommendations}
+        position="fixed"
+        bottom="16px"
+        left="50%"
+        transform="translateX(-50%)"
+        zIndex={1000}
+      >
+        Refresh results
+      </Button>
     </ChakraProvider>
   );
 };
