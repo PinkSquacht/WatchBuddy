@@ -27,7 +27,7 @@ const Home = () => {
   const handleGetRecommendations = () => {
     if (searchTerm.trim()) {
       router.push({
-        pathname: '/mockRecommendation',
+        pathname: '/recommendations',
         query: {
           movie: searchTerm,
           services: selectedServices.join(','),
