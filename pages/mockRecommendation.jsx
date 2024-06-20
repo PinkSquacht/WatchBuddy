@@ -14,7 +14,7 @@ const MockRecommendation = () => {
   useEffect(() => {
     const fetchRecommendations = async () => {
       try {
-        const response = await axios.post('http://127.0.0.1:5000/api/recommendations', {
+        const response = await axios.post('https://chat-w-flask.onrender.com/api/recommendations', {
           movie,
           streaming_services: services ? services.split(',') : [],
           genres: genres ? genres.split(',') : [],
