@@ -1,70 +1,128 @@
-WatchBuddy
+# WatchBuddy 🎬
 
-WatchBuddy is an application that helps you decide what to watch by providing personalized recommendations based on your selected genres, moods, and streaming services.
+WatchBuddy is a movie and TV show recommendation application that helps you discover what to watch based on your preferences. Simply enter a movie title, select your favorite genres and moods, choose your streaming services, and get instant recommendations!
 
-Table of Contents
-Tech Stack
-Features
-Getting Started
-Usage
-Project Structure
-Contributing
-License
-Tech Stack
-Next.js: A powerful React framework for building fast, server-side rendered applications.
-Chakra UI: A modern and responsive component library for React.
-Vercel: A cloud platform for static sites and Serverless Functions, used for continuous deployment.
-GitHub: For version control and collaboration.
-Features
-Personalized Recommendations: Get recommendations based on selected genres, moods, and streaming services.
-Responsive Design: Optimized for both desktop and mobile devices using Chakra UI.
-Continuous Deployment: Automatic deployments with Vercel for seamless integration and updates.
-Getting Started
-Prerequisites
-Node.js (v14 or higher)
-npm or yarn
-Installation
-Clone the repository:
+## 🌟 Features
 
+- **Instant Recommendations**: Get movie and TV show recommendations instantly without API costs
+- **Genre & Mood Filtering**: Select up to 6 genres and moods to personalize your search
+- **Streaming Service Integration**: Filter recommendations based on available streaming services (Netflix, Hulu, Amazon Prime, HBO Max)
+- **Detailed Movie Information**: Each recommendation includes runtime, Rotten Tomatoes ratings, synopsis, reviews, and IMDB links
+- **Responsive Design**: Beautiful, mobile-first UI built with Chakra UI
+- **Zero API Dependencies**: No API keys or external service costs required
 
-Copy code
+## 🛠 Tech Stack
 
+- **Next.js 14**: React framework for production
+- **Chakra UI**: Modern component library for responsive UI
+- **JavaScript/JSX**: Frontend logic
+- **Node.js**: Development environment
+
+## 📋 Prerequisites
+
+- Node.js v14 or higher
+- npm or yarn
+
+## 🚀 Getting Started
+
+### Installation
+
+Clone and setup:
+```bash
 git clone https://github.com/YourUsername/WatchBuddy.git
-
 cd WatchBuddy
-
-Install dependencies:
-
-
-Copy code
 npm install
-# or
-yarn install
-Running the Application
+```
+
+### Running the Application
+
 Start the development server:
-
-Copy code
+```bash
 npm run dev
-# or
-yarn dev
-Open your browser and navigate to http://localhost:3000.
+```
 
-Usage
-On the homepage, enter a movie or television show title in the search bar.
-Select your preferred genres and moods by clicking on the "Add genre/mood" button.
-Choose your streaming services by clicking on the "Add your streaming services" button.
-Click "Get Recommendations" to receive personalized movie recommendations.
-Project Structure
-arduino
-Copy code
+Open **http://localhost:3000** in your browser (or http://localhost:3001 if port 3000 is in use)
 
-Contributing
-We welcome contributions to improve WatchBuddy. To contribute:
+## 📖 How to Use
 
-Fork the repository.
-Create a new branch (git checkout -b feature/YourFeature).
-Commit your changes (git commit -m 'Add your feature').
-Push to the branch (git push origin feature/YourFeature).
-Open a Pull Request.
-License
-This project is licensed under the MIT License.
+1. **Enter a Movie Title**: Type in the search bar
+2. **Select Genres & Moods**: Click "Add genre/mood" and choose up to 6 options
+3. **Choose Streaming Services** *(optional)*: Filter by Netflix, Hulu, Amazon Prime, or HBO Max
+4. **Get Recommendations**: Click to see personalized suggestions
+5. **Explore**: Click IMDB links for more details
+
+## 📁 Project Structure
+
+```
+WatchBuddy/
+├── pages/
+│   ├── index.jsx                 # Homepage
+│   ├── recommendations.jsx       # Main recommendations page
+│   ├── mockRecommendation.jsx   # Alternative mock page
+│   └── api/recommendations.js    # API endpoint
+├── components/
+│   ├── SearchBar.jsx
+│   ├── SelectionButton.js
+│   └── StreamingServiceButton.jsx
+├── styles/
+│   ├── Home.module.css
+│   ├── recommendations.module.css
+│   └── theme.js                 # Chakra custom theme
+├── public/images/               # Logos and assets
+├── jsconfig.json
+├── next.config.mjs
+└── package.json
+```
+
+## 🎯 Available Options
+
+**Genres**: Action, Adventure, Animation, Comedy, Documentary, Drama, Fantasy, Horror, Musical, Romantic Comedy, Sci-Fi, Thriller/Suspense
+
+**Moods**: Cynical, Funny, Gripping, Intense, Heartwarming, Lighthearted, Scary, Moving, Tense, Thought-provoking, Uplifting
+
+**Streaming**: Netflix, Hulu, Amazon Prime, HBO Max
+
+## 📦 Recommendations Database
+
+Includes 6 premium films:
+- The Prestige (2006)
+- Heat (1995)
+- Zodiac (2007)
+- Inception (2010)
+- Pulp Fiction (1994)
+- The Dark Knight (2008)
+
+## 🚀 Production Build
+
+```bash
+npm run build
+npm start
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/YourFeature`
+3. Commit: `git commit -m 'Add your feature'`
+4. Push: `git push origin feature/YourFeature`
+5. Open a Pull Request
+
+## 📝 License
+
+MIT License - see LICENSE file for details.
+
+## 💡 Future Ideas
+
+- Real movie database integration (TMDB)
+- User ratings and favorites
+- Advanced filtering (year, rating, duration)
+- Social sharing
+- Theme toggle
+
+## 📞 Support
+
+Have questions? Open an issue on GitHub!
+
+---
+
+**Made with ❤️ to help you find your next favorite movie or show**
